@@ -14,34 +14,22 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
 
-public class Hanoi extends JPanel implements ActionListener,ComponentListener {
+public class Hanoi extends JPanel{
   private int w,h;
   public JComboBox combo;
   public JButton btn;
   public JLabel label;
   private int cant,count;
+  Timer T;
 
   HanoiModelo modelo;
   HanoiControlador controlador;
 
-    boolean start;
+  boolean start;
 
     public Hanoi(){
         interFace();
     }
-
-    private void setListeners(HanoiControlador c){
-        addComponentListener(this);
-        combo.addItemListener(c);
-        btn.addActionListener(c);
-    }
-
-    public void start(){
-        start = true;
-        btn.setEnabled(false);
-        repaint();
-    }
-
     private void interFace(){
         setLayout(null);
         setSize(300,300);
@@ -87,12 +75,15 @@ public class Hanoi extends JPanel implements ActionListener,ComponentListener {
 
     }
 
+    private void setListeners(HanoiControlador c){
+        addComponentListener(c);
+        combo.addItemListener(c);
+        btn.addActionListener(c);
+    }
+
     public void paint(Graphics g){
-        count++;
-        System.out.println("**: " + count);
 
         super.paint(g);
-
 
         w = getWidth();
         h = getHeight();
@@ -100,9 +91,9 @@ public class Hanoi extends JPanel implements ActionListener,ComponentListener {
         if(h>400)
             h = 400;
 
-        g.drawImage(Utilidades.AjustarImagen("Recursos/Hanoi-Component.png",(int)(w*0.80),(int)(h*0.80)).getImage(),(int)(w*0.10),30,null);
+        g.drawImage(Utilidades.AjustarImagen("Recursos/Hanoi-Component.png",(int)(w*0.80),225).getImage(),(int)(w*0.10),30,null);
         if(start){
-            g.drawImage(Utilidades.AjustarImagen("Recursos/comp1.png",(int)(w*0.20),(int)(7)).getImage(),(int)(w*0.13),(int)(h*0.87),null);
+            g.drawImage(Utilidades.AjustarImagen("Recursos/comp1.png",(int)(w*0.19),7).getImage(),(int)(w*0.13),243,null);
 
         }
 
@@ -113,41 +104,10 @@ public class Hanoi extends JPanel implements ActionListener,ComponentListener {
         btn.setEnabled(true);
     }
 
-    @Override
-    public void componentResized(ComponentEvent e) {
-        w = getWidth();
-        h = getHeight();
-
-        //label.setBorder(new LineBorder(Color.red));
-        label.setSize((int)(w*0.32),33);
-        label.setLocation((int)(w*0.11),(3+0*3));
-
-        //combo.setBorder(new LineBorder(Color.red));
-        combo.setSize((int)(w*0.15),20);
-        combo.setLocation((int)(w*0.45),(9+0*3));
-
-        //btn.setBorder(new LineBorder(Color.red));
-        btn.setSize((int)(w*0.25),20);
-        btn.setLocation((int)(w*0.62),(9+0*3));
+    public void start(){
+        start = true;
+        btn.setEnabled(false);
+        repaint();
     }
 
-    @Override
-    public void componentMoved(ComponentEvent e) {
-
-    }
-
-    @Override
-    public void componentShown(ComponentEvent e) {
-
-    }
-
-    @Override
-    public void componentHidden(ComponentEvent e) {
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }
