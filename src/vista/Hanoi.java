@@ -91,9 +91,9 @@ public class Hanoi extends JPanel{
         if(h>400)
             h = 400;
 
-        g.drawImage(Utilidades.AjustarImagen("Recursos/Hanoi-Component.png",(int)(w*0.80),225).getImage(),(int)(w*0.10),30,null);
+        g.drawImage(Utilidades.AjustarImagen("Recursos/Hanoi-Component.png",(int)(w*0.80),(int)(h*0.70)).getImage(),(int)(w*0.10),30,null);
         if(start){
-            g.drawImage(Utilidades.AjustarImagen("Recursos/comp1.png",(int)(w*0.19),7).getImage(),(int)(w*0.13),243,null);
+            g.drawImage(Utilidades.AjustarImagen("Recursos/comp1.png",(int)(w*0.19),(int)(h*0.03)).getImage(),(int)(w*0.13),201,null);
 
         }
 

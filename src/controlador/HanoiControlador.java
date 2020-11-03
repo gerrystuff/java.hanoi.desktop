@@ -57,6 +57,7 @@ public class HanoiControlador implements ItemListener, ActionListener, Component
             aux.btn.setSize((int)(w*0.25),20);
             aux.btn.setLocation((int)(w*0.62),(9+0*3));
 
+
         }
     }
 
